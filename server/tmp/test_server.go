@@ -7,9 +7,11 @@ import (
 )
 
 const (
-	CONN_HOST = "localhost"
+	CONN_HOST = "192.168.56.1"
 	CONN_PORT = "55554"
 	CONN_TYPE = "tcp"
+	
+	BUFF_SIZE = 8192
 )
 
 func main(){
@@ -41,17 +43,28 @@ func main(){
 //Handles incoming requests.
 func handleRequest(conn net.Conn){
 	// Make a buffer to hold incoming data.
-	buf := make([]byte, 1024)
+	buf := make([]byte, BUFF_SIZE)
 	
-	//Read the incoming connection into the buffer.
-	reqLen, err := conn.Read(buf)
-	if err != nil {
-		fmt.Println("Error reading:", err.Error())
+	c := bufio.NewReader(conn)
+	
+	for{
+		//read a byte which contains the messge len
+		size, err := c.ReadByte()
+		if err != nil{
+			return err
+		}
 	}
 	
+	_, err := io.ReadFull(c,buf[:int(size)])
+	if err != nil{
+		return err
+	}
+	
+	fmt.
+	
 	//Send a response back to person contacting us.
-	fmt.Println("Recv:",reqLen)
-	conn.Write([]byte("Message received:"))
+	
+	conn.Write([]byte("Message received!"))
 	
 	//Close the connection when you're done with it.
 	conn.Close() 
