@@ -12,7 +12,7 @@ public class Main {
 			System.out.println("Connection Fail.");
 		
 		System.out.println("Conn status = "+conn_state);
-		String str = "1HelloServer";
+		String str = "HelloServer";
 		byte[] testData = str.getBytes();
 
 		

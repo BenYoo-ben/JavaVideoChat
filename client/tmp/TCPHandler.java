@@ -10,6 +10,7 @@ public class TCPHandler {
 
 	private Socket c_socket;
 	private short conn_state = 0;
+	private short time_out = 10;
 	
 	public TCPHandler() {
 
@@ -70,15 +71,17 @@ public class TCPHandler {
 					byte[] msg;
 					int n=0,count=0;
 					
+					
 					Vector<Byte> byteV = new Vector<Byte>();
 					
-					System.out.println("RECVD : ");
+					while(dIn.available()<=0);
+					
 					while(dIn.available()>0) {
 						
 						byteV.add(dIn.readByte());
 						count++;
 					}
-					
+					System.out.println("RECVD : "+count);
 					msg = new byte[count];
 					for(n=0;n<count;n++)
 						msg[n] = byteV.elementAt(n);
