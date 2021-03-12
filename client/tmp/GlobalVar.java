@@ -4,7 +4,6 @@ public class GlobalVar {
 	
 	static int server_port = 55554;
 	static String server_ip = "192.168.56.1";
-
 	
 	
 	static void perror(String err_msg)

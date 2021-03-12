@@ -11,7 +11,7 @@ public class TCPHandler {
 	private Socket c_socket;
 	private short conn_state = 0;
 	private short time_out = 10;
-	
+
 	public TCPHandler() {
 
 		// TODO Auto-generated constructor stub
@@ -46,8 +46,10 @@ public class TCPHandler {
 	protected int Send(byte[] buffer) {
 		try {
 			if (conn_state == 1) {
-
+				
+				//open data stream,
 				DataOutputStream dOut = new DataOutputStream(c_socket.getOutputStream());
+				//write bytes with data length prefix.
 				dOut.writeInt(buffer.length);
 				dOut.write(buffer);
 			} else
@@ -63,34 +65,36 @@ public class TCPHandler {
 	}
 
 	protected byte[] Receive() {
-		
+
 		try {
 			if (conn_state == 1) {
 				DataInputStream dIn = new DataInputStream(c_socket.getInputStream());
-					
-					byte[] msg;
-					int n=0,count=0;
-					
-					
-					Vector<Byte> byteV = new Vector<Byte>();
-					
-					while(dIn.available()<=0);
-					
-					while(dIn.available()>0) {
-						
-						byteV.add(dIn.readByte());
-						count++;
-					}
-					System.out.println("RECVD : "+count);
-					msg = new byte[count];
-					for(n=0;n<count;n++)
-						msg[n] = byteV.elementAt(n);
-					
-					return msg;
 
-			}else
+				byte[] msg;
+				int n = 0, count = 0;
+
+				// (copying) vector -> byte[]
+				Vector<Byte> byteV = new Vector<Byte>();
+
+				// busy waiting until server sends any data.
+				while (dIn.available() <= 0)
+					;
+
+				while (dIn.available() > 0) {
+
+					byteV.add(dIn.readByte());
+					count++;
+				}
+				System.out.println("RECVD : " + count);
+				msg = new byte[count];
+				for (n = 0; n < count; n++)
+					msg[n] = byteV.elementAt(n);
+
+				return msg;
+
+			} else
 				return null;
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

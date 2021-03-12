@@ -46,12 +46,15 @@ func main() {
 //Handles incoming requests.
 func handleRequest(conn net.Conn) {
 	var err error
+	//tcp uses First 3 bytes to represent data length,
 	prefix := make([]byte, 4)
 	
 	_, err = io.ReadFull(conn, prefix)
 	if err != nil{
 		fmt.Printf("prefix read err\n")
 	}
+	fmt.Println(prefix)
+	
 	length := binary.BigEndian.Uint32(prefix)
 	
 	msg := make([]byte, int(length))

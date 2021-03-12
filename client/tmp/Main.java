@@ -6,13 +6,13 @@ public class Main {
 		TCPHandler tcp_handler = new TCPHandler();
 		System.out.println("Start Connection...");
 		
-		int conn_state=-9;
+		int conn_state=-1;
 		
 		if( (conn_state=tcp_handler.MakeConnection())!=0)
 			System.out.println("Connection Fail.");
 		
 		System.out.println("Conn status = "+conn_state);
-		String str = "HelloServer";
+		String str = "Hello Server";
 		byte[] testData = str.getBytes();
 
 		
