@@ -9,7 +9,7 @@ SRCS := $(wildcard $(SRC_DIR)/*.java)
 CLS := $(SRCS:$(SRC_DIR)/%.java=$(OUT_DIR)/%.class)
 
 JC := javac
-JCFLAGS := -d $(OUT_DIR)/ -cp '.:$(LIB_DIR)/*.jar:$(SRC_DIR)'
+JCFLAGS := -d $(OUT_DIR)/ -cp .:$(LIB_DIR)/*:$(SRC_DIR)
 
 .SUFFIXES: .java
 
