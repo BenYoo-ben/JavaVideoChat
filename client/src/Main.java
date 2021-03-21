@@ -1,3 +1,8 @@
+import javax.swing.JFrame;
+
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
 
 public class Main {
 
@@ -37,8 +42,8 @@ public class Main {
 		 * System.out.println("Finished");
 		 * 
 		 */
-		
-		
+	
+		VideoHandler vh = new VideoHandler();
 	}
 
 }
