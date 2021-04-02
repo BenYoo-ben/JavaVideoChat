@@ -10,7 +10,6 @@ public class TCPHandler {
 
 	private Socket c_socket;
 	private short conn_state = 0;
-	private short time_out = 10;
 
 	public TCPHandler() {
 
@@ -46,10 +45,8 @@ public class TCPHandler {
 	protected int Send(byte[] buffer) {
 		try {
 			if (conn_state == 1) {
-				
-				//open data stream,
+
 				DataOutputStream dOut = new DataOutputStream(c_socket.getOutputStream());
-				//write bytes with data length prefix.
 				dOut.writeInt(buffer.length);
 				dOut.write(buffer);
 			} else

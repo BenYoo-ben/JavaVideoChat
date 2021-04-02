@@ -39,4 +39,9 @@ public class VideoHandler {
 	{
 		return this.panel;
 	}
+	
+	byte[] CaptureToBytes()
+	{
+		byte[] bytes = WebcamUtils.getImageBytes(webcam,"jpg");
+	}
 }

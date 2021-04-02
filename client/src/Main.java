@@ -21,7 +21,6 @@ public class Main {
 		 * System.out.println("Conn status = "+conn_state); String str = "Hello Server";
 		 * byte[] testData = str.getBytes();
 		 * 
-		 * 
 		 * System.out.println("Sending data to server..."); conn_state =
 		 * tcp_handler.Send(testData); System.out.println("Send status = "+conn_state);
 		 * 
