@@ -19,7 +19,7 @@ import javax.sound.sampled.TargetDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 
-public class voiceRecord {
+public class voiceRecord2 {
  // 데이터화 시키기 https://docs.oracle.com/javase/tutorial/sound/capturing.html
 //https://stackoverflow.com/questions/4826169/record-voice-with-jav
 //https://www.youtube.com/watch?v=GVtl19L9GxU	
@@ -68,7 +68,7 @@ public class voiceRecord {
 		int bytesRead = 0;
 		
 		try {
-			while(bytesRead < 100000) {
+			while(bytesRead < 1000000) { //1024식 증가 해서 끝나면 음성이나옴
 				numBytesRead = targetDataLine.read(data, 0, CHUNK_SIZE);
 				bytesRead = bytesRead + numBytesRead;
 				System.out.println(bytesRead);
@@ -93,7 +93,7 @@ public class voiceRecord {
 			@Override
 			public void run() {
 				int cnt = 0;
-				byte tempBuffer[] = new byte[10000];
+				byte tempBuffer[] = new byte[1024];
 				try {
 					while((cnt = audioInputStream.read(tempBuffer, 0, tempBuffer.length)) != -1) {
 						if(cnt > 0) {
