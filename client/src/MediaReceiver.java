@@ -1,3 +1,6 @@
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 class MediaReceiver extends Thread
 {
 	DrawingBoard jp;
@@ -11,6 +14,13 @@ class MediaReceiver extends Thread
 	
 	public void run()
 	{
+		try {
+			byte[] tmp = Files.readAllBytes(Paths.get("022.jpg"));
+			jp.getImage(tmp);
+			jp.repaint();
+			}catch(Exception e) {
+					System.out.println("exc");
+			}
 		String[] input;
 		while(true)
 		{
@@ -19,8 +29,15 @@ class MediaReceiver extends Thread
 			switch(Integer.parseInt(input[0]))
 			{
 			case Global.OP.VIDEO_DATA:
-				jp.getImage(input[1].getBytes());
+				//jp.getImage(input[1].getBytes());
+				try {
+				byte[] tmp = Files.readAllBytes(Paths.get("022.jpg"));
+				jp.getImage(tmp);
 				jp.repaint();
+				}catch(Exception e) {
+						System.out.println("exc");
+				}
+				
 				break;
 			
 			}
