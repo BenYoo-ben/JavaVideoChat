@@ -28,10 +28,9 @@ public class Main {
 			
 			ImageIcon ic = null;
 			JLabel jl =  new JLabel();
-			jl.setIcon(ic);
 			
 			jf.add(jl);
-			jf.pack();
+			
 			
 			if(sock!=null)
 				tcp_handle.Send(sock,new String("0").getBytes());
@@ -45,6 +44,7 @@ public class Main {
 				jl.setIcon(ic);
 				
 				jf.repaint();
+				jf.pack();
 				tcp_handle.Send(sock,new String("0").getBytes());
 			}
 			
