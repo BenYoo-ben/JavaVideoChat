@@ -7,6 +7,7 @@ public class Global {
 
 	static int FrameW = 1280, FrameH = 720;
 	
+	//OPcode for 
 	static class OP
 	{
 		static final int REQUEST_CODE = 11;

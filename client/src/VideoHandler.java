@@ -7,11 +7,10 @@ import javax.swing.JPanel;
 
 public class VideoHandler {
 	
-
-	
 	private Webcam webcam;
 	private WebcamPanel panel;
 
+	//find def cam on computer.
 	public int initCam()
 	{
 		webcam = Webcam.getDefault();
@@ -26,6 +25,7 @@ public class VideoHandler {
 		return 0;
 	}
 	
+	//basic setting for cam.
 	public void setCam()
 	{
 		
@@ -40,11 +40,14 @@ public class VideoHandler {
 		
 	}
 	
+	//get panel.
 	public WebcamPanel getPanel()
 	{
 		return this.panel;
 	}
 	
+	
+	//capture img
 	byte[] CaptureToBytes()
 	{
 		System.out.println("Capturing...");

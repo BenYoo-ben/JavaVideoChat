@@ -27,6 +27,7 @@ public class DrawingBoard extends JPanel {
 
      @Override
     public void paintComponent(Graphics g) {
+    	 //repaint img
         super.paintComponent(g);
         Dimension size = getSize();
       g.drawImage(img,0,0,size.width,size.height,0,0,img.getWidth(),img.getHeight(),null);

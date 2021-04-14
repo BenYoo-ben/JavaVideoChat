@@ -14,17 +14,17 @@ class MediaSender extends Thread
 	
 	public void run()
 	{
-		byte[] header = new String(Global.OP.VIDEO_DATA).getBytes();
+		byte[] header = new String(Global.OP.VIDEO_DATA+"").getBytes();
 		while(true)
 		{
 			
 			System.out.println("Sending Header...");
-			th.Send(whole_data);
+			th.Send(header);
 			System.out.println("Sending Header Complete!");
 			
 			byte[] data =  vh.CaptureToBytes();
 			System.out.println("Sending Data...");
-			th.Send(whole_data);
+			th.Send(data);
 			System.out.println("Sending Data Complete!");
 			
 			System.out.println("Sent! "+ send_count);

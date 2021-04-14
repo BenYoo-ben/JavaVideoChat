@@ -16,6 +16,7 @@ class EventHandler implements ActionListener, KeyListener
 	public void actionPerformed(java.awt.event.ActionEvent e) {
 		Object o = e.getSource();
 		
+		//when connect button is cliecked;
 		if(o.equals(beginui.jb))
 		{
 			beginui.jl.setText("Connecting...");
@@ -37,6 +38,7 @@ class EventHandler implements ActionListener, KeyListener
 					System.exit(1);
 				}
 			
+			//move on to videochat screen.
 			beginui.frame.setVisible(false);
 			VideoHandler vh = new VideoHandler();
 			ChatUI cui = new ChatUI(th,vh);

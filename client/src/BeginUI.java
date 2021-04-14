@@ -27,6 +27,7 @@ class BeginUI
 	
 	public void setUI() {
 		
+		//set ui
 		
 		int w=Global.FrameW,h=Global.FrameH;	
 		int tf_w=500,tf_h=100;
@@ -65,6 +66,7 @@ class BeginUI
 	
 	public void Handle()
 	{
+		//event handling
 		jb.addActionListener(eh);
 		
 	}
