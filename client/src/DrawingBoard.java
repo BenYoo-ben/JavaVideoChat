@@ -19,7 +19,7 @@ public class DrawingBoard extends JPanel {
     	
     	ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
     	try {
-            img = ImageIO.read(bais);
+            this.img = ImageIO.read(bais);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -29,7 +29,7 @@ public class DrawingBoard extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Dimension size = getSize();
-        g.drawImage(img, 0, 0,size.width, size.height,0, 0, img.getWidth(), img.getHeight(), null);
+        g.drawImage(img, 0,0, this);
 
     }
 }

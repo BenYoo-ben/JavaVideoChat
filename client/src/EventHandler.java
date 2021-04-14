@@ -18,12 +18,12 @@ class EventHandler implements ActionListener, KeyListener
 		
 		if(o.equals(beginui.jb))
 		{
-			
-			th.MakeConnection();
 			beginui.jl.setText("Connecting...");
+			th.MakeConnection();
 			th.Receive();
 			beginui.jl.setText("Connected!");
 			th.Send(new String(Global.OP.REQUEST_CODE+"#"+beginui.tf.getText()).getBytes());
+		
 			beginui.tf.setText("");
 			
 			

@@ -16,7 +16,6 @@ class BeginUI
 	protected JTextField tf;
 	protected JLabel jl;
 	TCPHandler th;
-	ChatUI cui;
 	
 	BeginUI()
 	{
