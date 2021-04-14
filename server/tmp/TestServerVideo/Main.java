@@ -22,7 +22,7 @@ public class Main {
 			System.out.println("Client online!");
 			
 			JFrame jf = new JFrame();
-			jf.setSize(500,500);
+			jf.setSize(800,800);
 			jf.setVisible(true);
 			jf.setLayout(new FlowLayout());;
 			
@@ -33,18 +33,23 @@ public class Main {
 			
 			
 			if(sock!=null)
-				tcp_handle.Send(sock,new String("0").getBytes());
+				tcp_handle.Receive(sock);
+			else
+				System.out.println("Conn Fail..");
 			
 			while(true)
 			{
+				System.out.println("Receiving ... ");
 				byte[] recv_bytes = tcp_handle.Receive(sock);
+				System.out.println("Received!");
 				
-				recv_bytes = tcp_handle.Receive(sock);
 				ic = new ImageIcon(recv_bytes);
 				jl.setIcon(ic);
-				
+
 				jf.repaint();
 				jf.pack();
+				
+				System.out.println("configure done!");
 				tcp_handle.Send(sock,new String("0").getBytes());
 			}
 			
