@@ -26,7 +26,7 @@ public class Main {
 			jf.setVisible(true);
 			jf.setLayout(new FlowLayout());;
 			
-			ImageIcon ic = new ImageIcon(recv_bytes);
+			ImageIcon ic = null;
 			JLabel jl =  new JLabel();
 			jl.setIcon(ic);
 			
@@ -39,14 +39,13 @@ public class Main {
 			while(true)
 			{
 				byte[] recv_bytes = tcp_handle.Receive(sock);
-				System.out.println(new String(recv_bytes));
-				
 				
 				recv_bytes = tcp_handle.Receive(sock);
+				ic = new ImageIcon(recv_bytes);
+				jl.setIcon(ic);
 				
-				ic.setImage(recv_bytes);
 				jf.repaint();
-				tcp_handle.Send(sock,new String("0".getBytes));
+				tcp_handle.Send(sock,new String("0").getBytes());
 			}
 			
 	}

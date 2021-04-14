@@ -21,8 +21,8 @@ class ChatUI {
 	private JTextField tf;
 	private JTextArea ta;
 
-	public ChatUI() {
-		setUI();
+	public ChatUI(VideoHandler vh) {
+		setUI(vh);
 
 	}
 

@@ -42,7 +42,7 @@ public class Main {
 		ChatUI ui = new ChatUI(vh);
 		
 		TCPHandler tcp_h = new TCPHandler();
-		tcp_h.makeConnection();
+		tcp_h.MakeConnection();
 		long send_count = 0;
 		tcp_h.Receive();
 		while(true)
