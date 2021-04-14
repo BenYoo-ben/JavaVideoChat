@@ -21,7 +21,7 @@ class MediaSender extends Thread
 			byte[] whole_data = new byte[header.length + data.length];
 			System.arraycopy(header, 0, whole_data, 0, header.length); 
 		    System.arraycopy(data, 0, whole_data, header.length, data.length); 
-			System.out.println("Sending...");
+			System.out.println("Sending : "+new String(whole_data));
 			th.Send(whole_data);
 			System.out.println("Sent! "+ send_count);
 			send_count++;
