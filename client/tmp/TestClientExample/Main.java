@@ -25,10 +25,9 @@ public class Main {
 
 		String s = sc.nextLine();
 		tcp_handler.Send(s.getBytes());
-		
 
 		// send file example
-
+		
 		try {
 			byte[] array = Files.readAllBytes(Paths.get("./iu.jpg"));
 			tcp_handler.Send(array);

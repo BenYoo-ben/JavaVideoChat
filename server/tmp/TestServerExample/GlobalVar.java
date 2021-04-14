@@ -1,8 +1,6 @@
 
 public class GlobalVar {
 	
-	
-	
 	static int server_port = 54326;
 
 	static void perror(String err_msg)

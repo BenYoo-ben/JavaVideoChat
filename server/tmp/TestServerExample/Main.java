@@ -23,7 +23,6 @@ public class Main {
 			if(sock!=null)
 				tcp_handle.Send(sock,new String("0").getBytes());
 			
-			
 			byte[] recv_bytes = tcp_handle.Receive(sock);
 			System.out.println(new String(recv_bytes));
 			
