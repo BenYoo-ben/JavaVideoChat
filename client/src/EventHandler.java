@@ -20,22 +20,26 @@ class EventHandler implements ActionListener, KeyListener
 		{
 			
 			th.MakeConnection();
-			
+			beginui.jl.setText("Connecting...");
+			th.Receive();
+			beginui.jl.setText("Connected!");
 			th.Send(new String(Global.OP.REQUEST_CODE+"#"+beginui.tf.getText()).getBytes());
 			beginui.tf.setText("");
-			beginui.jl.setText("Connecting...");
 			
 			
-			while(true)
-			{
+			
+			
 				String s = new String(th.Receive());
-				if(Integer.parseInt(s)==Global.OP.REPLAY_READY)
-					break;
-			}
+				System.out.println("RECVD : "+s);
+				if(Integer.parseInt(s)!=Global.OP.REPLAY_READY)
+				{
+					System.out.println("ERROR!!");
+					System.exit(1);
+				}
 			
 			beginui.frame.setVisible(false);
 			VideoHandler vh = new VideoHandler();
-			beginui.cui = new ChatUI(th,vh);
+			ChatUI cui = new ChatUI(th,vh);
 		}
 		
 		

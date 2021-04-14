@@ -25,11 +25,12 @@ public class Main {
 		
 		while(true)
 		{
+			System.out.println("Waiting...");
 			Socket s = server.AcceptClient();
 			SocketThread st = new SocketThread(server,s);
 			st.start();
 			System.out.println("New Connection-"+conn_count+" is UP!");
-			
+			conn_count++;
 		}
 			
 	}

@@ -2,6 +2,7 @@
 import java.net.Socket;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 public class SocketThread extends Thread{
 	
 	TCPHandler th;
@@ -20,17 +21,32 @@ public class SocketThread extends Thread{
 		String[] input = parseRecv(th.Receive(sock));
 		
 		int op = Integer.parseInt(input[0]);
-		
+		System.out.println("RECEIVED!");
 		switch(op)
 		{
-		case Global.OP.REQUEST_CODE : 
-			int idx = Global.chatCodeList.indexOf(input[2]);
+		case Global.OP.REQUEST_CODE :
+			System.out.println("REQ!! : "+input[1]);
+			int idx = -1,tmp=0;;
+			Iterator<String> i = Global.chatCodeList.iterator();
+			
+			while(i.hasNext())
+			{
+				String s = i.next();
+				System.out.println("Viewing :"+s);
+				if(s.equals(input[1]))
+				{
+					idx=tmp;
+					break;
+				}
+				tmp++;
+			}
 			if(idx!=-1)
 			{
+				System.out.println("1.");
 				Global.chatParticipantCount.set(idx,Global.chatParticipantCount.get(idx)+1 );
-				Global.chatSocket.elementAt(idx).add(this.sock);
+				Global.chatSocket.get(idx).add(this.sock);
 				
-				if(Global.chatParticipantCount.elementAt(idx) == Global.CurrentMaximumCapacity)
+				if(Global.chatParticipantCount.get(idx) == Global.CurrentMaximumCapacity)
 				{
 					BridgeThread th1 = new BridgeThread(idx,0,this.th,Global.chatSocket.elementAt(idx).get(0),Global.chatSocket.elementAt(idx).get(1));
 					BridgeThread th2 = new BridgeThread(idx,1,this.th,Global.chatSocket.elementAt(idx).get(1),Global.chatSocket.elementAt(idx).get(0));
@@ -40,7 +56,8 @@ public class SocketThread extends Thread{
 			}
 			else
 			{
-				Global.chatCodeList.add(input[0]);
+				System.out.println("2.");
+				Global.chatCodeList.add(input[1]);
 				Global.chatParticipantCount.add(1);
 				
 				List<Socket> list = new ArrayList<Socket>();

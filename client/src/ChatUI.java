@@ -48,6 +48,7 @@ class ChatUI {
 		RightPanel = new JPanel(new BorderLayout());
 		
 		RightUnderPanel = new JPanel(new BorderLayout());
+		LeftPanel = new DrawingBoard();
 		
 		frame.setLayout(new GridLayout(1, 2));
 		frame.add(LeftPanel);
@@ -63,7 +64,7 @@ class ChatUI {
 		window.pack();
 		window.setVisible(true);
 		
-		LeftPanel = new DrawingBoard();
+		
 		
 		ms = new MediaSender(vh,this.th);
 		mr = new MediaReceiver(this.LeftPanel,this.th);
