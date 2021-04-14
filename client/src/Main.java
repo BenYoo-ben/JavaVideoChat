@@ -42,14 +42,28 @@ public class Main {
 		ChatUI ui = new ChatUI(vh);
 		
 		TCPHandler tcp_h = new TCPHandler();
-		tcp_h.MakeConnection();
+		System.out.println("Connection to Server...");
+		if(tcp_h.MakeConnection()!=0)
+		{
+			System.out.println("Connection Failed..");
+		}
+		else
+		{
+			System.out.println("Connected!");
+			tcp_h.Send(new String("0").getBytes());
+		}
+			
 		long send_count = 0;
-		tcp_h.Receive();
+		
 		while(true)
 		{
 			byte[] data_to_send = vh.CaptureToBytes();
+			//byte[] data_to_send = new String("hi").getBytes();
+			System.out.println("Sending...");
 			tcp_h.Send(data_to_send);
+			System.out.println("Sent!");
 			tcp_h.Receive();
+			System.out.print("Configuring : ");
 			System.out.println(send_count++);
 			
 		}

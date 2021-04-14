@@ -43,7 +43,9 @@ public class VideoHandler {
 	
 	byte[] CaptureToBytes()
 	{
+		System.out.println("Capturing...");
 		byte[] bytes = WebcamUtils.getImageBytes(webcam,"jpg");
+		System.out.println("Capture Done!");
 		return bytes;
 	}
 }
