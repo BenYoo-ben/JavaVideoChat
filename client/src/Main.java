@@ -6,6 +6,10 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		BeginUI beginui = new BeginUI();
+		
+		
+		
 		/******************************
 		 * 
 		 * CONNECTION EXAMPLE
@@ -38,6 +42,8 @@ public class Main {
 		 * System.out.println("Finished");
 		 * 
 		 */
+		
+		/*
 		VideoHandler vh = new VideoHandler();
 		ChatUI ui = new ChatUI(vh);
 		
@@ -68,7 +74,7 @@ public class Main {
 			
 		}
 		
-	
+	*/
 	}
 
 }

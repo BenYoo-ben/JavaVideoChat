@@ -19,7 +19,7 @@ public class TCPHandler {
 
 	protected int MakeConnection() {
 		try {
-			c_socket = new Socket(GlobalVar.server_ip, GlobalVar.server_port);
+			c_socket = new Socket(Global.server_ip, Global.server_port);
 			conn_state = 1;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

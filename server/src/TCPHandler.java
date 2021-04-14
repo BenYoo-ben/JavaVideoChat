@@ -20,7 +20,7 @@ public class TCPHandler {
 
 	protected int OpenServer() {
 		try {
-			s_socket = new ServerSocket(GlobalVar.server_port);
+			s_socket = new ServerSocket(Global.server_port);
 			conn_state = 1;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
