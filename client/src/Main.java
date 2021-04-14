@@ -38,8 +38,21 @@ public class Main {
 		 * System.out.println("Finished");
 		 * 
 		 */
+		VideoHandler vh = new VideoHandler();
+		ChatUI ui = new ChatUI(vh);
 		
-		ChatUI ui = new ChatUI();
+		TCPHandler tcp_h = new TCPHandler();
+		tcp_h.makeConnection();
+		long send_count = 0;
+		tcp_h.Receive();
+		while(true)
+		{
+			byte[] data_to_send = vh.CaptureToBytes();
+			tcp_h.Send(data_to_send);
+			tcp_h.Receive();
+			System.out.println(send_count++);
+			
+		}
 		
 	
 	}

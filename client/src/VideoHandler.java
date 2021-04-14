@@ -1,6 +1,7 @@
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
+import com.github.sarxos.webcam.WebcamUtils;
 
 public class VideoHandler {
 	
@@ -43,5 +44,6 @@ public class VideoHandler {
 	byte[] CaptureToBytes()
 	{
 		byte[] bytes = WebcamUtils.getImageBytes(webcam,"jpg");
+		return bytes;
 	}
 }

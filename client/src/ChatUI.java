@@ -26,7 +26,7 @@ class ChatUI {
 
 	}
 
-	public void setUI() {
+	public void setUI(VideoHandler vh) {
 		frame = new JFrame("Test webcam panel");
 		frame.setSize(1280, 720);
 
@@ -46,7 +46,6 @@ class ChatUI {
 		frame.add(LeftPanel);
 		frame.add(RightPanel);
 
-		VideoHandler vh = new VideoHandler();
 		vh.initCam();
 		vh.setCam();
 		LeftPanel.add(vh.getPanel());
