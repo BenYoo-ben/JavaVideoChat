@@ -1,3 +1,3 @@
 cd bin
-java -cp '.:../libs/*:..src/' Main
+java -cp '.:../libs/*' Main
 cd ..
