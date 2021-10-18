@@ -46,10 +46,10 @@ public class TCPHandler {
 	protected int Send(byte[] buffer) {
 		try {
 			if (conn_state == 1) {
-				
-				//open data stream,
+
+				// open data stream,
 				DataOutputStream dOut = new DataOutputStream(c_socket.getOutputStream());
-				//write bytes with data length prefix.
+				// write bytes with data length prefix.
 				dOut.writeInt(buffer.length);
 				dOut.write(buffer);
 			} else
@@ -74,9 +74,9 @@ public class TCPHandler {
 					msg = new byte[length];
 					dIn.readFully(msg, 0, msg.length);
 				}
-			}else
+			} else
 				return null;
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

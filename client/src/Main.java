@@ -1,20 +1,12 @@
 import javax.swing.JFrame;
 
-
 public class Main {
 
-	
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		
-		//now this is all i need
-		
 		BeginUI beginui = new BeginUI();
-		
-		
-		
+
 		/******************************
 		 * 
 		 * CONNECTION EXAMPLE
@@ -47,39 +39,25 @@ public class Main {
 		 * System.out.println("Finished");
 		 * 
 		 */
-		
+
 		/*
-		VideoHandler vh = new VideoHandler();
-		ChatUI ui = new ChatUI(vh);
-		
-		TCPHandler tcp_h = new TCPHandler();
-		System.out.println("Connection to Server...");
-		if(tcp_h.MakeConnection()!=0)
-		{
-			System.out.println("Connection Failed..");
-		}
-		else
-		{
-			System.out.println("Connected!");
-			tcp_h.Send(new String("0").getBytes());
-		}
-			
-		long send_count = 0;
-		
-		while(true)
-		{
-			byte[] data_to_send = vh.CaptureToBytes();
-			//byte[] data_to_send = new String("hi").getBytes();
-			System.out.println("Sending...");
-			tcp_h.Send(data_to_send);
-			System.out.println("Sent!");
-			tcp_h.Receive();
-			System.out.print("Configuring : ");
-			System.out.println(send_count++);
-			
-		}
-		
-	*/
+		 * VideoHandler vh = new VideoHandler(); ChatUI ui = new ChatUI(vh);
+		 * 
+		 * TCPHandler tcp_h = new TCPHandler();
+		 * System.out.println("Connection to Server..."); if(tcp_h.MakeConnection()!=0)
+		 * { System.out.println("Connection Failed.."); } else {
+		 * System.out.println("Connected!"); tcp_h.Send(new String("0").getBytes()); }
+		 * 
+		 * long send_count = 0;
+		 * 
+		 * while(true) { byte[] data_to_send = vh.CaptureToBytes(); //byte[]
+		 * data_to_send = new String("hi").getBytes(); System.out.println("Sending...");
+		 * tcp_h.Send(data_to_send); System.out.println("Sent!"); tcp_h.Receive();
+		 * System.out.print("Configuring : "); System.out.println(send_count++);
+		 * 
+		 * }
+		 * 
+		 */
 	}
 
 }

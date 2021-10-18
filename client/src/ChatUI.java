@@ -18,16 +18,15 @@ class ChatUI {
 	private JPanel RightPanel;
 	private JPanel RightUnderPanel;
 	private JButton sendButton;
-	
+
 	private JTextField tf;
 	private JTextArea ta;
-	
+
 	MediaReceiver mr;
 	MediaSender ms;
 	TCPHandler th;
-	
-	
-	public ChatUI(TCPHandler th,VideoHandler vh) {
+
+	public ChatUI(TCPHandler th, VideoHandler vh) {
 		this.th = th;
 		setUI(vh);
 
@@ -44,46 +43,42 @@ class ChatUI {
 		frame.setVisible(true);
 		frame.setVisible(true);
 
-		
 		RightPanel = new JPanel(new BorderLayout());
-		
+
 		RightUnderPanel = new JPanel(new BorderLayout());
-		
-		//Drawable JPanel(Overrode grahpics)
+
+		// Drawable JPanel(Overrode grahpics)
 		LeftPanel = new DrawingBoard();
-		
+
 		frame.setLayout(new GridLayout(1, 2));
 		frame.add(LeftPanel);
 		frame.add(RightPanel);
 
 		vh.initCam();
 		vh.setCam();
-		
+
 		JFrame window = new JFrame("Test webcam panel");
 		window.add(vh.getPanel());
 		window.setResizable(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.pack();
 		window.setVisible(true);
-		
-		
-		//start media send/receive thread
-		ms = new MediaSender(vh,this.th);
-		mr = new MediaReceiver(this.LeftPanel,this.th);
+
+		// start media send/receive thread
+		ms = new MediaSender(vh, this.th);
+		mr = new MediaReceiver(this.LeftPanel, this.th);
 
 		tf = new JTextField();
 		ta = new JTextArea();
 		ta.setEditable(false);
 		sendButton = new JButton("Send!");
-	
-		RightPanel.add(ta,"Center");
-		RightPanel.add(RightUnderPanel,"South");
-		
-		
-		
-		RightUnderPanel.add(tf,"Center");
-		RightUnderPanel.add(sendButton,"East");
-		
+
+		RightPanel.add(ta, "Center");
+		RightPanel.add(RightUnderPanel, "South");
+
+		RightUnderPanel.add(tf, "Center");
+		RightUnderPanel.add(sendButton, "East");
+
 		ms.start();
 		mr.start();
 
