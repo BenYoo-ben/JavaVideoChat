@@ -3,7 +3,7 @@ public class Global {
 
 	static int server_port = 55551;
 	static String server_ip = "127.0.0.1";
-
+    static int frame_rate = 60;
 	static int FrameW = 1280, FrameH = 720;
 
 	// OPcode for

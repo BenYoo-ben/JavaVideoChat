@@ -11,7 +11,8 @@ class MediaSender extends Thread {
 	}
 
 	public void run() {
-		byte[] header = new String(Global.OP.VIDEO_DATA + "").getBytes();
+		int media_send_rate = (int)(1000 / Global.frame_rate);
+        byte[] header = new String(Global.OP.VIDEO_DATA + "").getBytes();
 		while (true) {
 
 			System.out.println("Sending Header...");

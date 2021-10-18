@@ -18,7 +18,7 @@ class EventHandler implements ActionListener, KeyListener {
 		if (o.equals(beginui.jb)) {
 			//get server ip address from text field
 			
-			Global.server_ip.setText(beginui.tf2.getText());
+			Global.server_ip = (beginui.tf2.getText());
 			
 			beginui.jl.setText("Connecting...");
 			th.MakeConnection();

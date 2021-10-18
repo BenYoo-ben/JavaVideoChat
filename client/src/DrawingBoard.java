@@ -8,7 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 public class DrawingBoard extends JPanel {
-`
+
 	BufferedImage img;
 
 	public DrawingBoard() {
@@ -30,7 +30,7 @@ public class DrawingBoard extends JPanel {
 		// repaint img
 		super.paintComponent(g);
 		Dimension size = getSize();
-		g.drawImage(img, 0, 0, size.width, size.height, 0, 0, img.getWidth(), img.getHeight(), null);
+		g.drawImage(this.img, 0, 0, size.width, size.height, 0, 0, this.img.getWidth(), this.img.getHeight(), null);
 
 	}
 }
