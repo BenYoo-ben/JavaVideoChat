@@ -26,7 +26,11 @@ class MediaSender extends Thread {
 			System.out.println("Sent! " + send_count);
 			send_count++;
 			
-			this.sleep(media_send_rate);
+            try{
+			    this.sleep(media_send_rate);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
 		}
 	}
 
