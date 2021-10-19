@@ -56,7 +56,7 @@ class BeginUI {
 		tf2.setBounds(w / 2 - tf_w / 2,tf_h * 5 , tf_w, tf_h);
 		frame.add(tf2);
 
-		jl2 = new JLabel("Input Sever Address(IPv4: 192.168.0.1)");
+		jl2 = new JLabel("Input Sever Address(example: 192.168.0.1)");
 		jl2.setFont(new Font("Arial", Font.PLAIN, 14));
 		jl2.setBounds(w / 2 - tf_w / 2, tf_h * 6, tf_w, tf_h);
 		frame.add(jl2);
