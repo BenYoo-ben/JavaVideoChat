@@ -78,10 +78,15 @@ class ChatUI {
 
 		RightUnderPanel.add(tf, "Center");
 		RightUnderPanel.add(sendButton, "East");
-
+		
 		ms.start();
 		mr.start();
-
+		
+		/*
+		 * To-Do List: 
+		 * 1. make AudioHandler.java
+		 * 2. link it to MediaSender(2) & ChatUI(1)
+		 */
 	}
 
 	public JFrame getFrame() {
