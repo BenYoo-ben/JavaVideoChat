@@ -14,8 +14,7 @@ public class TCPHandler {
 	private int num_connections = 0;
 
 	public TCPHandler() {
-
-		// TODO Auto-generated constructor stub
+		//do nothing.
 	}
 
 	protected int OpenServer() {

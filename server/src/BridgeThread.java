@@ -29,7 +29,7 @@ public class BridgeThread extends Thread{
 		{
 			byte[] data = th.Receive(src);
 			th.Send(dst,data);
-			System.out.println(id+"-"+rev+" > Bridged.");
+			//System.out.println(id+"-"+rev+" > sent."); //for debug purpose.
 		}
 	}
 

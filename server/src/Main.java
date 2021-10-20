@@ -9,27 +9,28 @@ import javax.swing.JLabel;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-		Global.chatVarInit();
+		Global.chatVarInit(); //vector variables initialize
 		
 		TCPHandler server = new TCPHandler();
 		
+		//open server, start listening to port listed in Global.java
 		if(server.OpenServer()!=0)
 		{
 			System.out.println("Server Open Failed.");
 			System.exit(0);
 		}
 		
+		//count connections
 		long conn_count = 0;
 		
-		while(true)
+		while(true)	//main loop for handling requests.
 		{
 			System.out.println("Waiting...");
 			Socket s = server.AcceptClient();
 			SocketThread st = new SocketThread(server,s);
 			st.start();
-			System.out.println("New Connection-"+conn_count+" is UP!");
+			System.out.println("New Connection-"+conn_count+" ;");
 			conn_count++;
 		}
 			

@@ -21,42 +21,45 @@ public class SocketThread extends Thread{
 		String[] input = parseRecv(th.Receive(sock));
 		
 		int op = Integer.parseInt(input[0]);
-		System.out.println("RECEIVED!");
+		System.out.println("Connection check.");
 		switch(op)
 		{
 		case Global.OP.REQUEST_CODE :
-			System.out.println("REQ!! : "+input[1]);
-			int idx = -1,tmp=0;;
+			System.out.println("request : "+input[1]);
+			int idx = -1,tmp=0;
 			Iterator<String> i = Global.chatCodeList.iterator();
 			
 			while(i.hasNext())
 			{
 				String s = i.next();
-				System.out.println("Viewing :"+s);
+				
 				if(s.equals(input[1]))
 				{
+					//check if chat room exists
 					idx=tmp;
 					break;
 				}
 				tmp++;
 			}
-			if(idx!=-1)
+			
+			if(idx!=-1) //somebody already made chat room, so join inside.
 			{
-				System.out.println("1.");
-				Global.chatParticipantCount.set(idx,Global.chatParticipantCount.get(idx)+1 );
+				//increment # participants in the room, and add client socket.
+				Global.chatParticipantCount.set(idx,Global.chatParticipantCount.get(idx)+1 ); 
 				Global.chatSocket.get(idx).add(this.sock);
 				
+				//when # of clients reach room's maximum capacity (now it's 2)
 				if(Global.chatParticipantCount.get(idx) == Global.CurrentMaximumCapacity)
 				{
+					//create bridge(now 1 to 1 only)
 					BridgeThread th1 = new BridgeThread(idx,0,this.th,Global.chatSocket.elementAt(idx).get(0),Global.chatSocket.elementAt(idx).get(1));
 					BridgeThread th2 = new BridgeThread(idx,1,this.th,Global.chatSocket.elementAt(idx).get(1),Global.chatSocket.elementAt(idx).get(0));
 					th1.start();
 					th2.start();
 				}
 			}
-			else
+			else //no room exists with code, so make new room for it.
 			{
-				System.out.println("2.");
 				Global.chatCodeList.add(input[1]);
 				Global.chatParticipantCount.add(1);
 				
