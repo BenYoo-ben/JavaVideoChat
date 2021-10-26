@@ -18,13 +18,11 @@ class EventHandler implements ActionListener, KeyListener {
 
 	public void actionPerformed(java.awt.event.ActionEvent e) {
 		Object o = e.getSource();
-		
 		if(this.chui!= null && o.equals(chui.getSendButton())) {
 			chui.TextOffer();
 		}
 		else if (this.beginui!= null && o.equals(beginui.jb)) {	// when connect button is clicked;
 			//get server ip address from text field
-			
 			Global.server_ip = (beginui.tf2.getText());
 			
 			beginui.jl.setText("Connecting...");

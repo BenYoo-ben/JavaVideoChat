@@ -13,10 +13,10 @@ public class Global {
 	
 	// OPcode for data processing
 	static class OP {
-		static final int REQUEST_CODE = 0;
-		static final int REPLAY_READY = 1;
-		static final int VIDEO_DATA = 2;
-		static final int CHAT_DATA = 3;
+		static final int REQUEST_CODE = 10;
+		static final int REPLAY_READY = 11;
+		static final int VIDEO_DATA = 12;
+		static final int CHAT_DATA = 13;
 	}
 
 	static void perror(String err_msg) {
