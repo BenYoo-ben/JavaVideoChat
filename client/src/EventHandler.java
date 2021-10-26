@@ -25,21 +25,23 @@ class EventHandler implements ActionListener, KeyListener {
 			//get server ip address from text field
 			Global.server_ip = (beginui.tf2.getText());
 			
-			beginui.jl.setText("Connecting...");
+			System.out.println("Connecting...");
 			th.MakeConnection();
 			th.Receive();
-			beginui.jl.setText("Connected!");
+			System.out.println("Connected!");
 			th.Send(new String(Global.OP.REQUEST_CODE + "#" + beginui.tf.getText()).getBytes());
 
 			beginui.tf.setText("");
 
 			String s = new String(th.Receive());
+			System.out.println("Join Room!");
 			System.out.println("RECVD : " + s);
 			if (Integer.parseInt(s) != Global.OP.REPLAY_READY) {
 				System.out.println("ERROR!!");
 				System.exit(1);
 			}
 			
+			System.out.println("Begin Session!");
 			// move on to videochat screen.
 			beginui.frame.setVisible(false);
 			VideoHandler vh = new VideoHandler();

@@ -19,9 +19,9 @@ public class SocketThread extends Thread{
 		th.Send(sock, new String("0").getBytes());
 		
 		String[] input = parseRecv(th.Receive(sock));
-		
+	
 		int op = Integer.parseInt(input[0]);
-		System.out.println("Connection check.");
+		System.out.println("Connection check, op="+op);
 		switch(op)
 		{
 		case Global.OP.REQUEST_CODE :
