@@ -4,20 +4,16 @@ import java.nio.file.Paths;
 class MediaReceiver extends Thread {
 	DrawingBoard jp;
 	TCPHandler th;
+	ChatUI chui;
 
-	MediaReceiver(DrawingBoard jp, TCPHandler th) {
+	MediaReceiver(DrawingBoard jp, TCPHandler th, ChatUI chui) {
 		this.jp = jp;
 		this.th = th;
+		this.chui = chui;
 	}
 
 	public void run() {
-		try {
-			byte[] tmp = Files.readAllBytes(Paths.get("022.jpg"));
-			jp.getImage(tmp);
-			jp.repaint();
-		} catch (Exception e) {
-			System.out.println("exc");
-		}
+
 		String input;
 		while (true) {
 			input = new String(th.Receive());
@@ -30,11 +26,16 @@ class MediaReceiver extends Thread {
 					jp.getImage(th.Receive());
 					jp.repaint();
 				} catch (Exception e) {
-					System.out.println("exc");
+					System.out.println("exception in Code: "+Global.OP.VIDEO_DATA);
 				}
-
 				break;
-
+			case Global.OP.CHAT_DATA:
+				try{
+					chui.TextRecv(th.Receive().toString());
+				}catch(Exception e) {
+					System.out.println("exception in Code: "+Global.OP.CHAT_DATA);
+				}
+				break;
 			}
 		}
 

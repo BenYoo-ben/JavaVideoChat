@@ -3,19 +3,26 @@ import java.awt.event.KeyListener;
 
 class EventHandler implements ActionListener, KeyListener {
 
+	ChatUI chui;
 	BeginUI beginui;
 	TCPHandler th;
-
+	
 	public EventHandler(BeginUI bui) {
-		beginui = bui;
-		th = bui.th;
+		this.beginui = bui;
+		this.th = bui.th;
+	}
+	
+	public EventHandler(ChatUI chui) {
+		this.chui = chui;
 	}
 
 	public void actionPerformed(java.awt.event.ActionEvent e) {
 		Object o = e.getSource();
-
-		// when connect button is clicked;
-		if (o.equals(beginui.jb)) {
+		
+		if(this.chui!= null && o.equals(chui.getSendButton())) {
+			chui.TextOffer();
+		}
+		else if (this.beginui!= null && o.equals(beginui.jb)) {	// when connect button is clicked;
 			//get server ip address from text field
 			
 			Global.server_ip = (beginui.tf2.getText());
@@ -34,22 +41,28 @@ class EventHandler implements ActionListener, KeyListener {
 				System.out.println("ERROR!!");
 				System.exit(1);
 			}
-
+			
 			// move on to videochat screen.
 			beginui.frame.setVisible(false);
 			VideoHandler vh = new VideoHandler();
 			ChatUI cui = new ChatUI(th, vh);
 		}
+		
+		
 
 	};
 
 	public void keyPressed(java.awt.event.KeyEvent e) {
+
 	};
 
 	public void keyReleased(java.awt.event.KeyEvent e) {
 	};
 
 	public void keyTyped(java.awt.event.KeyEvent e) {
+		if(e.getKeyChar() == '\n') {
+			chui.TextOffer();
+		}
 	};
 
 }

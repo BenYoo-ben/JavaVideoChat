@@ -14,17 +14,27 @@ class MediaSender extends Thread {
 		int media_send_rate = (int)(1000 / Global.frame_rate);
         byte[] header = new String(Global.OP.VIDEO_DATA + "").getBytes();
 		while (true) {
-			System.out.println("Sending Header...");
+			//System.out.println("Sending Header...");
 			th.Send(header);
-			System.out.println("Sending Header Complete!");
+			//System.out.println("Sending Header Complete!");
 
 			byte[] data = vh.CaptureToBytes();
-			System.out.println("Sending Data...");
+			//System.out.println("Sending Data...");
 			th.Send(data);
-			System.out.println("Sending Data Complete!");
+			//System.out.println("Sending Data Complete!");
 
-			System.out.println("Sent! " + send_count);
+			System.out.println("Video Sent! " + send_count);
 			send_count++;
+			
+			
+			String str;
+			if( (str = Global.chat_queue.poll())!=null) {
+				header = new String(Global.OP.CHAT_DATA+"").getBytes();
+				th.Send(header);
+				data = str.getBytes();
+				th.Send(data);
+				System.out.println("Chat Sent!");
+			}
 			
             try{
 			    this.sleep(media_send_rate);
