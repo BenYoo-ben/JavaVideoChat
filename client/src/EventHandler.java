@@ -3,9 +3,9 @@ import java.awt.event.KeyListener;
 
 class EventHandler implements ActionListener, KeyListener {
 
-	ChatUI chui;
-	BeginUI beginui;
-	TCPHandler th;
+	ChatUI chui = null;
+	BeginUI beginui = null;
+	TCPHandler th = null;
 	
 	public EventHandler(BeginUI bui) {
 		this.beginui = bui;

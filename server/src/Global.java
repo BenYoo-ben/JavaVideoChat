@@ -15,10 +15,10 @@ public class Global {
 	
 	static class OP
 	{
-		static final int REQUEST_CODE = 11;
-		static final int REPLAY_READY = 24;
-		static final int VIDEO_DATA = 33;
-		static final int AUDIO_DATA = 55;
+		static final int REQUEST_CODE = 0;
+		static final int REPLAY_READY = 1;
+		static final int VIDEO_DATA = 2;
+		static final int CHAT_DATA = 3;
 	}
 	
 	
