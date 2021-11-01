@@ -70,7 +70,11 @@ public class TCPHandler {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			c_socket.close();
+			try{
+				c_socket.close();
+			}catch(Exception E2){
+				E2.printStackTrace();
+			}
 			e.printStackTrace();
 			return -1;
 		}
@@ -89,7 +93,11 @@ public class TCPHandler {
 			}
 		} catch (IOException e) {
 			// do nothing
-			c_socket.close();
+			try{
+				c_socket.close();
+			}catch(Exception E2){
+				E2.printStackTrace();
+			}
 			return null;
 		}
 
