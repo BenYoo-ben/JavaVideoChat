@@ -31,7 +31,7 @@ class MediaReceiver extends Thread {
 				break;
 			case Global.OP.CHAT_DATA:
 				try{
-					chui.TextRecv(th.Receive().toString());
+					chui.TextRecv(new String(th.Receive()));
 				}catch(Exception e) {
 					System.out.println("exception in Code: "+Global.OP.CHAT_DATA);
 				}

@@ -23,7 +23,8 @@ class EventHandler implements ActionListener, KeyListener {
 		}
 		else if (this.beginui!= null && o.equals(beginui.jb)) {	// when connect button is clicked;
 			//get server ip address from text field
-			Global.server_ip = (beginui.tf2.getText());
+			if(beginui.tf2.getText().length()>0)
+					Global.server_ip = (beginui.tf2.getText());
 			
 			System.out.println("Connecting...");
 			th.MakeConnection();
