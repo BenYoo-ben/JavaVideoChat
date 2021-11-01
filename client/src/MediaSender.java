@@ -1,4 +1,4 @@
-import jdk.nashorn.internal.objects.Global;
+
 
 class MediaSender extends Thread {
 
@@ -33,7 +33,7 @@ class MediaSender extends Thread {
 			if( (str = Global.chat_queue.poll())!=null) {
 				//chat handler;
 				th.Send(chat_header);
-				byte[] data = str.getBytes();
+				data = str.getBytes();
 				th.Send(data);
 				System.out.println("Chat Sent!");
 			}
