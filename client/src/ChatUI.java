@@ -26,24 +26,27 @@ class ChatUI {
 	MediaSender ms;
 	TCPHandler th;
 	EventHandler eh;
-	
+
 	public ChatUI(TCPHandler th, VideoHandler vh) {
 		this.th = th;
 		eh = new EventHandler(this);
 		setUI(vh);
 	}
-	
+
 	public void TextOffer() {
 		String str = this.tf.getText();
-		Global.chat_queue.offer(str);
-		this.ta.setText(ta.getText()+"\nME: "+str);
-		this.tf.setText("");
+		if (str.length()>0) {
+			Global.chat_queue.offer(str);
+			this.ta.setText(ta.getText() + "\nME: " + str);
+			this.tf.setText("");
+		}
 	}
 	
+
 	public void TextRecv(String str) {
-		this.ta.setText(ta.getText()+"\nTalker: "+str);
+		this.ta.setText(ta.getText() + "\nAnonymous: " + str);
 	}
-	
+
 	public JButton getSendButton() {
 		return this.sendButton;
 	}
@@ -69,13 +72,11 @@ class ChatUI {
 		frame.setLayout(new GridLayout(1, 2));
 		frame.add(LeftPanel);
 		frame.add(RightPanel);
-		
-		frame.addKeyListener(this.eh);
 
 		vh.initCam();
 		vh.setCam();
 
-		JFrame window = new JFrame("Test webcam panel");
+		JFrame window = new JFrame("SelfView Frame");
 		window.add(vh.getPanel());
 		window.setResizable(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,9 +85,10 @@ class ChatUI {
 
 		// start media send/receive thread
 		ms = new MediaSender(vh, this.th);
-		mr = new MediaReceiver(this.LeftPanel, this.th,this);
+		mr = new MediaReceiver(this.LeftPanel, this.th, this);
 
 		tf = new JTextField();
+		tf.addKeyListener(this.eh);
 		ta = new JTextArea();
 		ta.setEditable(false);
 		sendButton = new JButton("Send");
@@ -97,10 +99,10 @@ class ChatUI {
 
 		RightUnderPanel.add(tf, "Center");
 		RightUnderPanel.add(sendButton, "East");
-		
+
 		ms.start();
 		mr.start();
-		
+
 	}
 
 	public JFrame getFrame() {

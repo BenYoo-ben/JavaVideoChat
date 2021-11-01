@@ -26,7 +26,7 @@ class MediaSender extends Thread {
 			th.Send(data);
 			//System.out.println("Sending Data Complete!");
 
-			System.out.println("Video Sent! " + send_count);
+			//System.out.println("Video Sent! " + send_count);
 			send_count++;
 			
 	

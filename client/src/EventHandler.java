@@ -54,16 +54,16 @@ class EventHandler implements ActionListener, KeyListener {
 	};
 
 	public void keyPressed(java.awt.event.KeyEvent e) {
-
+		if(e.getKeyCode()==java.awt.event.KeyEvent.VK_ENTER) {
+			chui.TextOffer();
+		}
 	};
 
 	public void keyReleased(java.awt.event.KeyEvent e) {
 	};
 
 	public void keyTyped(java.awt.event.KeyEvent e) {
-		if(e.getKeyChar() == '\n') {
-			chui.TextOffer();
-		}
+		
 	};
 
 }
