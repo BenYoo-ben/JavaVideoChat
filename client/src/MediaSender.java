@@ -1,3 +1,4 @@
+import jdk.nashorn.internal.objects.Global;
 
 class MediaSender extends Thread {
 
@@ -12,10 +13,12 @@ class MediaSender extends Thread {
 
 	public void run() {
 		int media_send_rate = (int)(1000 / Global.frame_rate);
-        byte[] header = new String(Global.OP.VIDEO_DATA + "").getBytes();
-		while (true) {
+        byte[] video_header = new String(Global.OP.VIDEO_DATA + "").getBytes();
+        byte[] chat_header = new String(Global.OP.CHAT_DATA+ "").getBytes();
+        String str;
+        while (true) {
 			//System.out.println("Sending Header...");
-			th.Send(header);
+			th.Send(video_header);
 			//System.out.println("Sending Header Complete!");
 
 			byte[] data = vh.CaptureToBytes();
@@ -26,12 +29,11 @@ class MediaSender extends Thread {
 			System.out.println("Video Sent! " + send_count);
 			send_count++;
 			
-			
-			String str;
+	
 			if( (str = Global.chat_queue.poll())!=null) {
-				header = new String(Global.OP.CHAT_DATA+"").getBytes();
-				th.Send(header);
-				data = str.getBytes();
+				//chat handler;
+				th.Send(chat_header);
+				byte[] data = str.getBytes();
 				th.Send(data);
 				System.out.println("Chat Sent!");
 			}
