@@ -25,6 +25,9 @@ class EventHandler implements ActionListener, KeyListener {
 			//get server ip address from text field
 			if(beginui.tf2.getText().length()>0)
 					Global.server_ip = (beginui.tf2.getText());
+			if(beginui.tf3.getText().length()>0)
+					Global.frame_rate = Integer.parseInt((beginui.tf3.getText()));
+			
 			
 			System.out.println("Connecting...");
 			th.MakeConnection();

@@ -58,6 +58,7 @@ public class TCPHandler {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			this.CloseConnection();
 			return -1;
 		}
 
@@ -79,7 +80,9 @@ public class TCPHandler {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			this.CloseConnection();
 			return null;
 		}
 

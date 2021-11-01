@@ -14,7 +14,7 @@ public class TCPHandler {
 	private int num_connections = 0;
 
 	public TCPHandler() {
-		//do nothing.
+		// do nothing.
 	}
 
 	protected int OpenServer() {
@@ -40,7 +40,7 @@ public class TCPHandler {
 			e.printStackTrace();
 			return -1;
 		}
-		
+
 		return 0;
 	}
 
@@ -61,39 +61,40 @@ public class TCPHandler {
 	}
 
 	protected int Send(Socket c_socket, byte[] buffer) {
+		if(buffer.length<=0)
+			return -1;
 		try {
-		DataOutputStream dOut = new DataOutputStream(c_socket.getOutputStream());
-		dOut.writeInt(buffer.length);
-		dOut.write(buffer);
-			
+			DataOutputStream dOut = new DataOutputStream(c_socket.getOutputStream());
+			dOut.writeInt(buffer.length);
+			dOut.write(buffer);
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			c_socket.close();
 			e.printStackTrace();
 			return -1;
 		}
-		
+
 		return 0;
 	}
-	
-	protected byte[] Receive(Socket c_socket)
-	{
+
+	protected byte[] Receive(Socket c_socket) {
 		byte[] msg = null;
 		try {
 			DataInputStream dIn = new DataInputStream(c_socket.getInputStream());
 			int length = dIn.readInt();
-			if(length > 0)
-			{
+			if (length > 0) {
 				msg = new byte[length];
-				dIn.readFully(msg,0,msg.length);
+				dIn.readFully(msg, 0, msg.length);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// do nothing
+			c_socket.close();
 			return null;
 		}
-		
+
 		return msg;
-		
+
 	}
 
 }

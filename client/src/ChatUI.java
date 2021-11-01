@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.text.DefaultCaret;
+import javax.swing.JScrollPane;
 
 import javax.swing.JButton;
 import java.awt.GridLayout;
@@ -10,6 +12,7 @@ import java.awt.BorderLayout;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.Component;
+import java.awt.Font;
 
 class ChatUI {
 	private JFrame frame;
@@ -52,15 +55,12 @@ class ChatUI {
 	}
 
 	public void setUI(VideoHandler vh) {
-		frame = new JFrame("Test webcam panel");
+		frame = new JFrame("JavaVideoChat");
 		frame.setSize(Global.FrameW, Global.FrameH);
 
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
-
-		frame.setVisible(true);
-		frame.setVisible(true);
 
 		RightPanel = new JPanel(new BorderLayout());
 
@@ -89,12 +89,21 @@ class ChatUI {
 
 		tf = new JTextField();
 		tf.addKeyListener(this.eh);
+		
+		
+		
 		ta = new JTextArea();
 		ta.setEditable(false);
+		ta.setFont(new Font("Arial",Font.PLAIN,13));
+		DefaultCaret caret = (DefaultCaret)ta.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
+		JScrollPane scrollpane = new JScrollPane(ta);
+		
 		sendButton = new JButton("Send");
 		sendButton.addActionListener(this.eh);
 
-		RightPanel.add(ta, "Center");
+		RightPanel.add(scrollpane, "Center");
 		RightPanel.add(RightUnderPanel, "South");
 
 		RightUnderPanel.add(tf, "Center");
@@ -102,7 +111,11 @@ class ChatUI {
 
 		ms.start();
 		mr.start();
-
+		
+		frame.revalidate();
+		frame.repaint();
+		frame.setVisible(true);
+		
 	}
 
 	public JFrame getFrame() {

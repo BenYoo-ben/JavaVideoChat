@@ -17,16 +17,9 @@ class MediaSender extends Thread {
         byte[] chat_header = new String(Global.OP.CHAT_DATA+ "").getBytes();
         String str;
         while (true) {
-			//System.out.println("Sending Header...");
 			th.Send(video_header);
-			//System.out.println("Sending Header Complete!");
-
 			byte[] data = vh.CaptureToBytes();
-			//System.out.println("Sending Data...");
 			th.Send(data);
-			//System.out.println("Sending Data Complete!");
-
-			//System.out.println("Video Sent! " + send_count);
 			send_count++;
 			
 	
