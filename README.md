@@ -28,3 +28,5 @@ ex) git clone "https://github.com/BenYoo-ben/JavaVideoChat"
 1. cd server
 2. make
 3. ./run.sh (default port: 55551)
+  
+(Webcam Driver 출처: github.com/sarxos)
