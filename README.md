@@ -12,21 +12,22 @@ Client는 Linux 또는 Windows 환경에서 실행이 가능하며 Server는 Lin
 ex) git clone "https://github.com/BenYoo-ben/JavaVideoChat"  
   
   
-[Client - Linux]
+**[Client - Linux]**
 1.  cd client
 2.  make
 3.  ./run.sh
   
   
-[Client - Windows]
+**[Client - Windows]**
 1. cd client
 2. make -f Makefile_windows
 3. run_windows.bat
   
   
-[Server - Linux]
+**[Server - Linux]**
 1. cd server
 2. make
 3. ./run.sh (default port: 55551)
   
-(Webcam Driver 출처: github.com/sarxos)
+(Webcam Driver 출처: github.com/sarxos)  
+_21-11-24: 기본 기능이 구현되어 있으며 추후에 보완할 계획입니다._
