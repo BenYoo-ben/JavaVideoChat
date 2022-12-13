@@ -1,4 +1,6 @@
 ### Java Video Chat  
+![image](https://user-images.githubusercontent.com/57353430/207296291-d3653fa4-1b50-4459-a82e-213363ea6005.png)
+
 
 [KR]  
 Java를 통해 작성한 영상 채팅 프로그램입니다.  
